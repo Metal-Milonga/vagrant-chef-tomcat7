@@ -26,7 +26,7 @@ VERIFYSCRIPT
 # you're doing.
 Vagrant.configure(2) do |config|
   config.vm.box = "hansode/centos-6.5-x86_64"
-
+:wq
   config.vbguest.auto_update = false
 
   config.vm.provision "file",
@@ -63,6 +63,7 @@ Vagrant.configure(2) do |config|
 	  chef.cookbooks_path = "/home/dholton/Dropbox/Work/learning/Udemy/Vagrant-Up/vagrant/chef/supermarket"
 	  # chef.roles_path = "/home/dholton/Dropbox/Work/learning/Udemy/Vagrant-Up/vagrant/chef/roles"
 	  chef.add_recipe "java"
+	  chef.add_recipe "tomcat_latest"
 	  # chef.add_role "web"
 	  chef.json = {
 		  "java" => {
