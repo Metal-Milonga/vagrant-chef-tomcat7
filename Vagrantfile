@@ -63,15 +63,15 @@ Vagrant.configure(2) do |config|
   # documentation for more information about their specific syntax and use.
   config.vm.provision "chef_solo" do |chef|
 	  chef.cookbooks_path = ["/home/dholton/Dropbox/Work/learning/Udemy/Vagrant-Up/vagrant/chef/supermarket","/home/dholton/Dropbox/Work/learning/Udemy/Vagrant-Up/vagrant/chef/cookbooks"]
-	  # chef.roles_path = "/home/dholton/Dropbox/Work/learning/Udemy/Vagrant-Up/vagrant/chef/roles"
-	  chef.add_recipe "java"
-	  chef.add_recipe "vagrant_tomcat"
-	  # chef.add_role "web"
-	  chef.json = {
-		  "java" => {
-			  "jdk_version" => "7"
-		  }
-	  }
+	  chef.roles_path = "/home/dholton/Dropbox/Work/learning/Udemy/Vagrant-Up/vagrant/chef/roles"
+	  #chef.add_recipe "java"
+	  #chef.add_recipe "vagrant_tomcat"
+	  chef.add_role "tomcat7"
+	  #chef.json = {
+	#	  "java" => {
+	#		  "jdk_version" => "7"
+	#	  }
+	#  }
   end
 
 end
