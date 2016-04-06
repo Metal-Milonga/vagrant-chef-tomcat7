@@ -7,6 +7,8 @@ sudo cp -f /vagrant/CentOS-Base.repo /etc/yum.repos.d
 sudo ls -l /etc/yum.repos.d/CentOS-Base.repo
 #yum install -y git
 #yum install -y nano
+sudo service iptables stop
+sudo chkconfig iptables off
 MYSCRIPT
 
 $verifyscript = <<VERIFYSCRIPT
@@ -60,10 +62,10 @@ Vagrant.configure(2) do |config|
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
   config.vm.provision "chef_solo" do |chef|
-	  chef.cookbooks_path = "/home/dholton/Dropbox/Work/learning/Udemy/Vagrant-Up/vagrant/chef/supermarket"
+	  chef.cookbooks_path = ["/home/dholton/Dropbox/Work/learning/Udemy/Vagrant-Up/vagrant/chef/supermarket","/home/dholton/Dropbox/Work/learning/Udemy/Vagrant-Up/vagrant/chef/cookbooks"]
 	  # chef.roles_path = "/home/dholton/Dropbox/Work/learning/Udemy/Vagrant-Up/vagrant/chef/roles"
 	  chef.add_recipe "java"
-	  chef.add_recipe "tomcat_latest"
+	  chef.add_recipe "vagrant_tomcat"
 	  # chef.add_role "web"
 	  chef.json = {
 		  "java" => {
